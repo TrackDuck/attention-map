@@ -157,7 +157,7 @@ p img {
   border: none;
 }
 
-pre, code {
+pre, code, textarea {
   width: 100%;
   color: #222;
   background-color: #fff;
