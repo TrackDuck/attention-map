@@ -8,5 +8,7 @@ With this bookmarklet you can put a heat map, which reveals how the average Web 
 
 ### Support and credits
 Created and maintained for you by [TrackDuck](https://trackduck.com) - visual feedback and bug tracking with screenshots for web integrated with more than 15 project management systems.
-![TrackDuck](http://trackduck.github.io/attention-map/images/td.png)
+
+[![TrackDuck](http://trackduck.github.io/attention-map/images/td.png)](https://trackduck.com)
+
 If you have any questions/comments/recommendations drop us a line to: hello@trackduck.com
