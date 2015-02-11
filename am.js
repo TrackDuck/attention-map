@@ -1,64 +1,56 @@
-javascript:(function(){
-
-    // Get Canvas & Context
-    //http://jscompress.com/
-    //http://ted.mielczarek.org/code/mozilla/bookmarklet.html
+javascript:(function () {
 
     document.body.innerHTML += '<canvas id="canvas"></canvas>';
-    var canvas = document.getElementById( "canvas" );
+    var canvas = document.getElementById("canvas");
     canvas.style.zIndex = "9999";
     canvas.style.top = '0px';
     canvas.style.left = '0px';
-    canvas.style.position='fixed';
+    canvas.style.position = 'fixed';
 
-    var scrollTopStorage=0;
-
-
-
+    var scrollTopStorage = 0;
 
 
 //////
-    function onTimerEventHandler()
-    { if(scrollTopStorage!==document.body.scrollTop){
-        // console.log(document.body.scrollTop );
-        scrollTopStorage=document.body.scrollTop;
-        drawGrid({
-            theContext : ctx
-        });
-    }
+    function onTimerEventHandler() {
+        if (scrollTopStorage !== document.body.scrollTop) {
+            // console.log(document.body.scrollTop );
+            scrollTopStorage = document.body.scrollTop;
+            drawGrid({
+                theContext: ctx
+            });
+        }
 
     }
 
 
-    var colors={}
-    colors={
-        minH:45,
-        maxH:205,
-        S:85,
-        L:90
+    var colors = {}
+    colors = {
+        minH: 45,
+        maxH: 205,
+        S: 85,
+        L: 90
     };
 
-    var data={
-        rows:
-            [ 9.9,
-                11.1,
-                15.9,
-                13.7,
-                11,
-                7.9,
-                6.1,
-                6.4,
-                3.1,
-                2,
-                1.7,
-                1.4,
-                1.1,
-                0.8,
-                0.5,
-                0.2,
-                0.3],
+    var data = {
+        rows: [ 9.9,
+            11.1,
+            15.9,
+            13.7,
+            11,
+            7.9,
+            6.1,
+            6.4,
+            3.1,
+            2,
+            1.7,
+            1.4,
+            1.1,
+            0.8,
+            0.5,
+            0.2,
+            0.3],
 
-        columns:[
+        columns: [
             11,
             13,
             15,
@@ -72,28 +64,27 @@ javascript:(function(){
             2.1
         ]
     }
-    var ctx = canvas.getContext( "2d" );
+    var ctx = canvas.getContext("2d");
 
-    var minInRows=Math.min.apply( null, data.rows );
-    var minInCols=Math.min.apply( null, data.columns );
-
-
-    var maxInRows=Math.max.apply( null, data.rows );
-    var maxInCols=Math.max.apply( null, data.columns );
-
-    var maxInRowsCols=maxInRows+maxInCols; //100%
-    var minInRowsCols=minInRows+minInCols; //0%
-
-    var diffRowsCols=maxInRowsCols-minInRowsCols;
+    var minInRows = Math.min.apply(null, data.rows);
+    var minInCols = Math.min.apply(null, data.columns);
 
 
+    var maxInRows = Math.max.apply(null, data.rows);
+    var maxInCols = Math.max.apply(null, data.columns);
 
-    var colorDiff=colors.maxH-colors.minH;
-    var perc=colorDiff/100;
-    var percData=diffRowsCols/100;
+    var maxInRowsCols = maxInRows + maxInCols; //100%
+    var minInRowsCols = minInRows + minInCols; //0%
 
-    console.log('minInRows'+minInRows+'minInCols'+minInCols+'maxInRows'+maxInRows+'maxInCols'+maxInCols);
-    console.log('diffRowsCols'+diffRowsCols);
+    var diffRowsCols = maxInRowsCols - minInRowsCols;
+
+
+    var colorDiff = colors.maxH - colors.minH;
+    var perc = colorDiff / 100;
+    var percData = diffRowsCols / 100;
+
+    console.log('minInRows' + minInRows + 'minInCols' + minInCols + 'maxInRows' + maxInRows + 'maxInCols' + maxInCols);
+    console.log('diffRowsCols' + diffRowsCols);
 
 // Resize Canvas
     canvas.width = window.innerWidth;
@@ -101,7 +92,7 @@ javascript:(function(){
 
 
 // Define drawGrid function
-    function drawGrid ( options ) {
+    function drawGrid(options) {
 
 
 
@@ -113,12 +104,11 @@ javascript:(function(){
         var ctx = options.theContext || false;
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        if ( ! ctx ) return;
+        if (!ctx) return;
 
         var bkg = options.background || "rgba(0,0,0,0)";
         var txt = options.colorOfNum || "#FFFFFF";
         var num = options.displayNum || true;
-
 
 
         var W = ctx.canvas.width;
@@ -127,84 +117,85 @@ javascript:(function(){
 
         ctx.font = "10px Verdana";
         ctx.fillStyle = bkg;
-        ctx.fillRect( 0, 0, W, H );
+        ctx.fillRect(0, 0, W, H);
         ctx.lineWidth = 0;
 
         //
-        var blockHeight = 50+(canvas.height/data.rows.length/2);
+        var blockHeight = 50 + (canvas.height / data.rows.length / 2);
 
 
-        var blockWidth = canvas.width/data.columns.length;
+        var blockWidth = canvas.width / data.columns.length;
 
-        for ( var bw =-1; bw < data.columns.length; bw += 1 ) {
+        for (var bw = -1; bw < data.columns.length; bw += 1) {
 
-            for ( var bh = 0; bh < data.rows.length; bh += 1 ) {
+            for (var bh = 0; bh < data.rows.length; bh += 1) {
 
-                var calcPageH=Math.round(scrollTopStorage/blockHeight);
+                var calcPageH = Math.round(scrollTopStorage / blockHeight);
 
-                var attrOpt = data.columns[bw]+data.rows[bh+calcPageH];
-                var attrBase = data.columns[bw]+data.rows[bh];
-                var attr = (attrOpt+attrBase)/2;
+                var attrOpt = data.columns[bw] + data.rows[bh + calcPageH];
+                var attrBase = data.columns[bw] + data.rows[bh];
+                var attr = (attrOpt + attrBase) / 2;
 
 
-                if(isNaN(attr))  {
-                    var currentCellData=attrBase/2;
-                }else{
-                    var currentCellData=attr;
+                if (isNaN(attr)) {
+                    var currentCellData = attrBase / 2;
+                } else {
+                    var currentCellData = attr;
                 }
 
 
                 //get it in percents
-                var currentCallPercent = (currentCellData-minInRowsCols)/percData;
+                var currentCallPercent = (currentCellData - minInRowsCols) / percData;
 
                 //get it in color value
-                var colorAttrVal=currentCallPercent*perc
+                var colorAttrVal = currentCallPercent * perc
 
-                var rgb=hsvToRgb(colors.maxH-colorAttrVal, 85, 90);
+                var rgb = hsvToRgb(colors.maxH - colorAttrVal, 85, 90);
 
-                ctx.fillStyle="rgba("+rgb[0]+","+rgb[1]+","+rgb[2]+",0.9)";
-                ctx.fillRect(bw*blockWidth, bh*blockHeight,blockWidth,blockHeight);
+                ctx.fillStyle = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",0.9)";
+                ctx.fillRect(bw * blockWidth, bh * blockHeight, blockWidth, blockHeight);
 
 
             }
         }
 
 
-        for ( var x = 0; x < W; x += 10 ) {
+        for (var x = 0; x < W; x += 10) {
             ctx.beginPath();
             ctx.fillStyle = txt;
             // ctx.strokeStyle = min;
-            if ( x % 50 == 0 ) {
+            if (x % 50 == 0) {
                 //ctx.strokeStyle = maj;
-                num && ctx.fillText( x, x, 10 );
+                num && ctx.fillText(x, x, 10);
             }
         }
 
-        for ( var y = 0; y < H; y += 10 ) {
+        for (var y = 0; y < H; y += 10) {
             ctx.beginPath();
             ctx.fillStyle = txt;
             //ctx.strokeStyle = min;
-            if ( y % 50 == 0 ) {
+            if (y % 50 == 0) {
                 // ctx.strokeStyle = maj;
-                num && y && ctx.fillText( y, 0, y + 8 );
+                num && y && ctx.fillText(y, 0, y + 8);
             }
         }
 
     }
 
-    var myVar = setInterval(function(){ onTimerEventHandler() }, 3);
+    drawGrid({
+        theContext: ctx
+    });
+
+    var myVar = setInterval(function () {
+        onTimerEventHandler()
+    }, 3);
 
 
-    window.addEventListener('resize', function(event){
-        // do stuff here
+    window.addEventListener('resize', function (event) {
         drawGrid({
 
-            theContext : ctx,
-            // majorColor : "#F00",
-            // minorColor : "#BA4",
-            // background : "#F15",
-            // displayNum : false,
-            // colorOfNum : "#FFF"
+            theContext: ctx,
+
         });
     });
 
@@ -235,7 +226,7 @@ javascript:(function(){
         s /= 100;
         v /= 100;
 
-        if(s == 0) {
+        if (s == 0) {
             // Achromatic (grey)
             r = g = b = v;
             return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
@@ -248,7 +239,7 @@ javascript:(function(){
         q = v * (1 - s * f);
         t = v * (1 - s * (1 - f));
 
-        switch(i) {
+        switch (i) {
             case 0:
                 r = v;
                 g = t;
@@ -286,4 +277,5 @@ javascript:(function(){
         }
 
         return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-    }})();
+    }
+})();
