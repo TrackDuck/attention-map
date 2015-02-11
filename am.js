@@ -82,9 +82,10 @@ javascript:(function () {
     var colorDiff = colors.maxH - colors.minH;
     var perc = colorDiff / 100;
     var percData = diffRowsCols / 100;
+    var foldLimit = 500;
 
-   // console.log('minInRows' + minInRows + 'minInCols' + minInCols + 'maxInRows' + maxInRows + 'maxInCols' + maxInCols);
-   // console.log('diffRowsCols' + diffRowsCols);
+    // console.log('minInRows' + minInRows + 'minInCols' + minInCols + 'maxInRows' + maxInRows + 'maxInCols' + maxInCols);
+    // console.log('diffRowsCols' + diffRowsCols);
 
 // Resize Canvas
     canvas.width = window.innerWidth;
@@ -138,7 +139,8 @@ javascript:(function () {
 
 
                 if (isNaN(attr)) {
-                    var currentCellData = attrBase / 2;
+//                    var currentCellData = attrBase / 2;
+                    var currentCellData = attrBase / (scrollTopStorage/foldLimit);
                 } else {
                     var currentCellData = attr;
                 }
