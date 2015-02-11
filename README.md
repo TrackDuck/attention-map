@@ -4,7 +4,7 @@ With this bookmarklet you can put a heat map, which reveals how the average Web 
 ### How it works
 [Install bookmarklet](http://trackduck.github.io/attention-map/) launch it on any page, image or mock-up of your next landing page (you can upload images with TrackDuck) or check [example](http://trackduck.github.io/attention-map/examples) 
 
-![User attention heatmap](https://hsto.org/files/fcc/59c/9cd/fcc59c9cd9fb4a5bafa1c9e5d54e252a.png)
+[![User attention heatmap](https://hsto.org/files/fcc/59c/9cd/fcc59c9cd9fb4a5bafa1c9e5d54e252a.png)](http://trackduck.github.io/attention-map/examples) 
 
 ### Support and credits
 Created and maintained for you by [TrackDuck](https://trackduck.com) - visual feedback and bug tracking with screenshots for web integrated with more than 15 project management systems.
