@@ -203,8 +203,7 @@ javascript:(function () {
                 theContext: ctx
             });
         }
-    }​
-
+    }
     /**
      * HSV to RGB color conversion
      *
