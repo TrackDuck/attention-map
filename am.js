@@ -197,7 +197,9 @@ javascript:(function () {
         });
     });
 
-
+    drawGrid({
+        theContext: ctx
+    });
     /**
      * HSV to RGB color conversion
      *
@@ -278,6 +280,3 @@ javascript:(function () {
     }
 })();
 
-drawGrid({
-    theContext: ctx
-});
