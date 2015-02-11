@@ -1,4 +1,4 @@
-### Heat map of Web users’ viewing time distribution across websites 
+### Heat map of Web users viewing time allocation across websites 
 With this bookmarklet you can put a heat map, which reveals how the average Web user distributes their viewing time across websites, on every website. It’s useful for web project managers and designers who are starting a landing page and deciding its layout.
 
 ### How it works
