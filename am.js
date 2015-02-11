@@ -83,8 +83,8 @@ javascript:(function () {
     var perc = colorDiff / 100;
     var percData = diffRowsCols / 100;
 
-    console.log('minInRows' + minInRows + 'minInCols' + minInCols + 'maxInRows' + maxInRows + 'maxInCols' + maxInCols);
-    console.log('diffRowsCols' + diffRowsCols);
+   // console.log('minInRows' + minInRows + 'minInCols' + minInCols + 'maxInRows' + maxInRows + 'maxInCols' + maxInCols);
+   // console.log('diffRowsCols' + diffRowsCols);
 
 // Resize Canvas
     canvas.width = window.innerWidth;
@@ -182,9 +182,7 @@ javascript:(function () {
 
     }
 
-    drawGrid({
-        theContext: ctx
-    });
+
 
     var myVar = setInterval(function () {
         onTimerEventHandler()
@@ -279,3 +277,7 @@ javascript:(function () {
         return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
     }
 })();
+
+drawGrid({
+    theContext: ctx
+});
