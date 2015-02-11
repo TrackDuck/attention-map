@@ -191,15 +191,20 @@ javascript:(function () {
 
     window.addEventListener('resize', function (event) {
         drawGrid({
-
-            theContext: ctx,
-
+            theContext: ctx
         });
     });
+    document.onreadystatechange = function () {
+        var state = document.readyState
+        if (state == 'interactive') {
+            //init()
+        } else if (state == 'complete') {
+            drawGrid({
+                theContext: ctx
+            });
+        }
+    }​
 
-    drawGrid({
-        theContext: ctx
-    });
     /**
      * HSV to RGB color conversion
      *
