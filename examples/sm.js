@@ -22,6 +22,18 @@ javascript:(function () {
 
     }
 
+    var ui="";
+    ui += "<div style=\"background-color: #fff; \/* width:130px; *\/ height: 41px;z-index: 10001;bottom: 0;position: fixed;\">";
+    ui += "<div style=\"background-color: #e8c538; width: 41px; height: 41px;float: left;text-align: center;font-size: 12px;color: #fff;line-height: 40px;\">max<\/div><div style=\"background-color: #389ee8; width: 41px; height: 41px;float: left;text-align: center; font-size: 12px; color: #fff; line-height: 40px;\">min";
+    ui += "<\/div>";
+    ui += "<div style=\"";
+    ui += "    background-color: #fff;";
+    ui += "    padding: 10px 21px;";
+    ui += "    float: left;";
+    ui += "\"> <input type=\"range\" id=\"rangeinput\" name=\"points\" min=\"0\" max=\"10\" style=\"";
+    ui += "    width: 80px;";
+    ui += "\"><\/div>  ";
+    ui += "<\/div>";
 
     var colors = {}
     colors = {
@@ -196,14 +208,33 @@ javascript:(function () {
             theContext: ctx
         });
     });
+    document.write(ui);
+    var rangeInput = document.getElementById("rangeinput");
+    var mainCanvas = document.getElementById("canvas");
+
+
+    rangeInput.addEventListener("change", function() {
+        mainCanvas.style.opacity=rangeInput.value/10;
+    }, false);
+
+
+
     document.onreadystatechange = function () {
         var state = document.readyState
         if (state == 'interactive') {
             //init()
+
+
         } else if (state == 'complete') {
             drawGrid({
                 theContext: ctx
             });
+
+
+
+
+
+
         }
     }
     /**
